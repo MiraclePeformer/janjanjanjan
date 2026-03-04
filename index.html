@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        .hearts-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 15s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-heart {
+            font-size: 80px;
+            animation: pulse 1.5s ease-in-out infinite;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa8a8, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.3);
+            }
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .message p {
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ff6b6b;
+            font-weight: 500;
+        }
+
+        .promise-box {
+            background: rgba(255, 107, 107, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .promise-box h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffa8a8;
+        }
+
+        .promise-box ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .promise-box li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .promise-box li:nth-child(1) { animation-delay: 0.5s; }
+        .promise-box li:nth-child(2) { animation-delay: 0.7s; }
+        .promise-box li:nth-child(3) { animation-delay: 0.9s; }
+        .promise-box li:nth-child(4) { animation-delay: 1.1s; }
+        .promise-box li:nth-child(5) { animation-delay: 1.3s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .promise-box li::before {
+            content: '💕';
+            position: absolute;
+            left: 0;
+        }
+
+        .forgive-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a5a);
+            border: none;
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .forgive-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ffa8a8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .thank-you {
+            text-align: center;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .thank-you h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .thank-you p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .big-heart {
+            font-size: 150px;
+            animation: bigPulse 0.5s ease-in-out infinite;
+            display: inline-block;
+            margin: 30px 0;
+        }
+
+        @keyframes bigPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .photo-container {
+            margin: 20px auto 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ff6b6b;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.5), 0 0 60px rgba(255, 107, 107, 0.3);
+            animation: photoGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes photoGlow {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(255, 107, 107, 0.5), 0 0 60px rgba(255, 107, 107, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(255, 107, 107, 0.7), 0 0 80px rgba(255, 107, 107, 0.5);
+            }
+        }
+
+        .photo-heart {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 30px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                padding: 30px 20px;
+            }
+            
+            .main-heart {
+                font-size: 60px;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+
+            .photo {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-bg" id="hearts-bg"></div>
+    
+    <div class="container">
+        <div class="card" id="apology-card">
+            <div class="main-heart"></div>
+            
+            <div class="photo-container">
+                <img src="assets/janjan.jpeg" alt="My Love" class="photo">
+                <span class="photo-heart">💕</span>
+            </div>
+            
+            <h1>To JanJan</h1>
+            
+            <div class="message">
+                <p>
+                    ถึงแจนแจน เบบี๋ บนโลกนี้มีคนเป็นล้านๆคน มีทางเปนล้านๆทาง แต่เค้าตัดสินใจแล้วว่าไม่ว่าเมื่อไหร่ตอนไหน เค้าจะเดินไปในทางของเทอเสมอ ตราบใดที่เค้ายังอยู่ เทอจะถูกรักเสมอ จะถูกรักอย่างดี จะไม่ให้มีวันไหนที่เทอรู้สึกว่าต้องพยายามอะไรอีก เทอรู้ว่าเค้ากลัวการสาบานมากแค่ไหน แต่ครั้งนี้เค้าขอสาบานต่อเทอ ว่าเทอจะมีเค้าในทุกๆวัน เทอจะไม่ต้องโดดเดี่ยว เทอจะได้รับการดูแลที่ดีที่สุดจากโทฟี่คนนี้ ตลอดและเสมอไป เค้าอยากเปนคนคอยดูแลเทอในทุกๆเรื่อง อยากเปนทั้งเพื่อน คนรู้ใจ และเปนที่พักพิงในทุกๆวันของเทอ เค้าจะไม่ทำให้เทอต้องตัดสินใจพลาดอีก ช่วยเชื่อในตัวเค้าอีกสักครั้งนะคะ อยากให้รู้เสมอว่า เทอคือสิ่งที่ดีที่สุดในชีวิตเค้า นับตั้งแต่วินาทีที่เราก้าวเข้าไปในโลกของผู้ใหญ๋ เราจะปรับตัวได้ ให้เค้าเปนคนปรับเข้าไปหาเทอนะคะ เค้ารู้ว่าในวัยทำงานทุกอย่างมันยาก แต่ครั้งนี้เค้าจะไม่ยอมให้เทอต้องเจออะไรแย่ๆอีก เค้าสัญญา
+                </p>
+                <p>
+                    จากตอนนี้ไม่ว่าเมื่อไหร่ไม่ว่าตอนไหน เทอจะมีเค้าเสมอในทุกๆวัน เทอจะไม่มีวันต้องเสียใจในการตัดสินใจเลย เค้ารู้ว่าเทอใจแข็งแค่ไหน ช่วยมองตาเค้าเข้าไปลึกๆ เทอจะเหนถึงความตั้งใจของเค้าจริงๆ เค้าสัญญา และสาบาน เค้าจะเปน best version of panda for u forever ever เลย
+                </p>
+                <p>
+                    <span class="highlight">You are the best thing that ever happened to me</span>, 
+                    and I don't want to lose you over my mistake.
+                </p>
+            </div>
+
+            <div class="promise-box">
+                <h3>My Promises to You</h3>
+                <ul>
+                    <li>เทอจะเป็นที่หนึ่ง เปนอย่างแรกที่เค้่จะเลือกโดยไม่มีเงื่อนไข</li>
+                    <li>จะมีแค่เทอตลอดไปที่เค้าจะแคร์ ไม่ว่าคนอื่นจะต้องรับอะไร เค้าจะแคร์แค่เทอ</li>
+                    <li>15000 baht per month for u in 3 years i promise i will do my best</li>
+                    <li>จะตั้งใจรักเทอให้มากที่สุดในแบบที่เทอรัก</li>
+                    <li>always be ur best version of panda</li>
+                </ul>
+            </div>
+
+            <button class="forgive-btn" onclick="showThankYou()">
+                💕 I Forgive You 💕
+            </button>
+
+            <div class="signature">
+                Forever Yours Panda🐼
+            </div>
+        </div>
+
+        <div class="card hidden" id="thank-you-card">
+            <div class="thank-you">
+                <div class="big-heart">❤️</div>
+                <h2>Thank You, My Love!</h2>
+                <p>
+                    You've made me the happiest person in the world! 
+                    I promise to spend every day making you smile and showing you how much I love you.
+                </p>
+                <p style="margin-top: 20px;">
+                    You are my everything, today, tomorrow, and forever. 💕
+                </p>
+                <div class="signature">
+                    I Love You JanJan❤️ always.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <canvas class="celebration hidden" id="confetti"></canvas>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-bg');
+            const hearts = ['💕', '❤️', '💗', '💖', '💘', '💝'];
+            
+            for (let i = 0; i < 30; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+            }
+        }
+
+        createHearts();
+
+        // Show thank you message
+        function showThankYou() {
+            document.getElementById('apology-card').classList.add('hidden');
+            document.getElementById('thank-you-card').classList.remove('hidden');
+            launchConfetti();
+        }
+
+        // Confetti celebration
+        function launchConfetti() {
+            const canvas = document.getElementById('confetti');
+            canvas.classList.remove('hidden');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const confetti = [];
+            const colors = ['#ff6b6b', '#ffa8a8', '#ff8787', '#fff', '#ffb6c1', '#ff69b4'];
+            
+            for (let i = 0; i < 200; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    size: Math.random() * 10 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 3 + 2,
+                    angle: Math.random() * Math.PI * 2,
+                    spin: Math.random() * 0.2 - 0.1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                confetti.forEach((c, index) => {
+                    c.y += c.speed;
+                    c.x += Math.sin(c.angle) * 2;
+                    c.angle += c.spin;
+                    
+                    ctx.save();
+                    ctx.translate(c.x, c.y);
+                    ctx.rotate(c.angle);
+                    ctx.fillStyle = c.color;
+                    ctx.fillRect(-c.size / 2, -c.size / 2, c.size, c.size);
+                    ctx.restore();
+                    
+                    if (c.y > canvas.height) {
+                        confetti[index].y = -20;
+                        confetti[index].x = Math.random() * canvas.width;
+                    }
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+    </script>
+</body>
+</html>
